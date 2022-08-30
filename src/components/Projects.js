@@ -53,7 +53,7 @@ function Projects(props) {
     {
       title: "React Calculator",
       description:
-        "This is a an immediate execution calculator app. The app was created using Next.js as a framework and the styled-components library.",
+        "This is a formula logic calculator app. The app was created using Next.js as a framework and the styled-components library.",
       src: "https://react-calculator-two-chi.vercel.app/",
     },
     {
