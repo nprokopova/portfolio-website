@@ -11,7 +11,6 @@ import WbSunnyIcon from "@material-ui/icons/WbSunny";
 import Drawer from "@material-ui/core/Drawer";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
-import ListItemText from "@material-ui/core/ListItemText";
 import { makeStyles } from "@material-ui/core/styles";
 import Section from "components/Section";
 import { useDarkMode } from "util/theme";
@@ -86,13 +85,6 @@ function Navbar(props) {
           className={classes.drawerList}
           onClick={() => setDrawerOpen(false)}
         >
-          <ListItem
-            button={true}
-            component="a"
-            href="https://app.mysite.com/auth/signin"
-          >
-            <ListItemText>Sign in</ListItemText>
-          </ListItem>
           <ListItem>
             <IconButton
               color="inherit"
