@@ -11,11 +11,21 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   subtitle: {
-
     maxWidth: 700,
-
+    [theme.breakpoints.up('md')]: {
+      fontSize: '1.3rem'
+    },
     display: "inline-block",
   },
+  about: {
+    textShadow: '1px 1px 10px gray',
+    marginTop: '10px',
+    maxWidth: 700,
+    [theme.breakpoints.up('md')]: {
+      fontSize: '1.3rem'
+    },
+    display: "inline-block",
+  }
 }));
 
 function SectionHeader(props) {
@@ -44,7 +54,7 @@ function SectionHeader(props) {
       )}
 
       {subtitle && (
-        <Typography variant="subtitle1" className={classes.subtitle}>
+        <Typography variant="subtitle1" className={props.className? classes[props.className]: classes.subtitle}>
           {subtitle}
         </Typography>
       )}

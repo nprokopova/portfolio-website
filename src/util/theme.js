@@ -16,7 +16,7 @@ const themeConfig = {
       type: "light",
       primary: {
 
-        main: colors.indigo["500"],
+        main: colors.grey["600"],
 
       },
       secondary: {
@@ -37,7 +37,7 @@ const themeConfig = {
       type: "dark",
       primary: {
 
-        main: colors.indigo["500"],
+        main: colors.grey["800"],
       },
       secondary: {
         main: colors.pink["500"],

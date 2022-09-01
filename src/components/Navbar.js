@@ -15,8 +15,8 @@ const useStyles = makeStyles((theme) => ({
     height: 80,
     marginRight: theme.spacing(2),
     marginTop: 5,
-    [theme.breakpoints.down('md')]: {
-      height: '60px'
+    [theme.breakpoints.down('sm')]: {
+      height: '60px',
     },
    
   },
@@ -26,6 +26,9 @@ const useStyles = makeStyles((theme) => ({
   spacer: {
     flexGrow: 1,
   },
+  section: {
+    padding: "20px"
+  }
 }));
 
 function Navbar(props) {
@@ -40,7 +43,7 @@ function Navbar(props) {
     props.logoInverted && darkMode.value ? props.logoInverted : props.logo;
 
   return (
-    <Section bgColor={props.color} size="auto">
+    <Section bgColor={props.color} size="auto" className={classes.section}>
       <AppBar position="static" color="transparent" elevation={0}>
         <Container disableGutters={true}>
           <Toolbar>

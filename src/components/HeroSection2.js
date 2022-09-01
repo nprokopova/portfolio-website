@@ -18,6 +18,7 @@ function HeroSection2(props) {
             title={props.title}
             subtitle={props.subtitle}
             size={4}
+            className='about'
           />
         </Box>
       </Container>
