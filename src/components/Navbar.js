@@ -3,14 +3,9 @@ import AppBar from "@material-ui/core/AppBar";
 import Container from "@material-ui/core/Container";
 import Toolbar from "@material-ui/core/Toolbar";
 import Link from "next/link";
-import Hidden from "@material-ui/core/Hidden";
 import IconButton from "@material-ui/core/IconButton";
-import MenuIcon from "@material-ui/icons/Menu";
 import NightsStayIcon from "@material-ui/icons/NightsStay";
 import WbSunnyIcon from "@material-ui/icons/WbSunny";
-import Drawer from "@material-ui/core/Drawer";
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
 import { makeStyles } from "@material-ui/core/styles";
 import Section from "components/Section";
 import { useDarkMode } from "util/theme";
@@ -19,7 +14,10 @@ const useStyles = makeStyles((theme) => ({
   logo: {
     height: 80,
     marginRight: theme.spacing(2),
-    marginTop: 5
+    marginTop: 5,
+    [theme.breakpoints.down('md')]: {
+      height: '60px'
+    },
    
   },
   drawerList: {
@@ -34,7 +32,7 @@ function Navbar(props) {
   const classes = useStyles();
 
   const darkMode = useDarkMode();
-  const [drawerOpen, setDrawerOpen] = useState(false);
+
 
   // Use inverted logo if specified
   // and we are in dark mode
@@ -52,17 +50,6 @@ function Navbar(props) {
               </a>
             </Link>
             <div className={classes.spacer} />
-            <Hidden smUp={true} implementation="css">
-              <IconButton
-                onClick={() => {
-                  setDrawerOpen(true);
-                }}
-                color="inherit"
-              >
-                <MenuIcon />
-              </IconButton>
-            </Hidden>
-            <Hidden xsDown={true} implementation="css">
               <IconButton
                 color="inherit"
                 onClick={darkMode.toggle}
@@ -72,32 +59,11 @@ function Navbar(props) {
 
                 {!darkMode.value && <WbSunnyIcon />}
               </IconButton>
-            </Hidden>
+
           </Toolbar>
         </Container>
       </AppBar>
-      <Drawer
-        anchor="right"
-        open={drawerOpen}
-        onClose={() => setDrawerOpen(false)}
-      >
-        <List
-          className={classes.drawerList}
-          onClick={() => setDrawerOpen(false)}
-        >
-          <ListItem>
-            <IconButton
-              color="inherit"
-              onClick={darkMode.toggle}
-              style={{ opacity: 0.6 }}
-            >
-              {darkMode.value && <NightsStayIcon />}
-
-              {!darkMode.value && <WbSunnyIcon />}
-            </IconButton>
-          </ListItem>
-        </List>
-      </Drawer>
+      
     </Section>
   );
 }
