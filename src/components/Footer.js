@@ -15,7 +15,8 @@ const useStyles = makeStyles((theme) => ({
   wrapper: {
     display: "flex",
     flexWrap: "wrap",
-    alignItems: 'center'
+    alignItems: 'center',
+    justifyContent: 'center'
   },
   item: {
     display: "flex",
@@ -25,14 +26,14 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: 24,
     [theme.breakpoints.up("sm")]: {
       flex: "50%",
+      marginBottom: 0
     },
   },
-  brand: {
+  logo: {
     display: "block",
-    [theme.breakpoints.up('sm')]: {
-      
-    },
-    height: '80px'
+    height: '80px',
+
+    
   },
   social: {
     alignItems: "flex-end",
@@ -60,14 +61,7 @@ const useStyles = makeStyles((theme) => ({
       order: 1,
     },
   },
-  legal: {
-    opacity: 0.6,
-    fontSize: "0.875rem",
-    "& a": {
-      color: "inherit",
-      marginLeft: "0.8rem",
-    },
-  },
+
 }));
 
 function Footer(props) {
@@ -91,7 +85,7 @@ function Footer(props) {
           <div className={`${classes.item} ${classes.left}`}>
             <Link href="/">
               <a>
-                <img src={logo} alt="Logo" className={classes.brand} />
+                <img src={logo} alt="Logo" className={classes.logo} />
               </a>
             </Link>
           </div>
