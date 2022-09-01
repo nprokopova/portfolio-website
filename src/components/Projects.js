@@ -121,7 +121,7 @@ function Projects(props) {
               </Grid>
               <Grid item={true} xs={12} md={6}>
                 <figure className={classes.figure}>
-                <IframeResizer src={item.src} autoResize={true} className={classes.iframe} scrolling="no" allowfullscreen frameBorder="0" ></IframeResizer>
+                <IframeResizer src={item.src} autoResize={true} className={classes.iframe} scrolling="no" allowFullScreen frameBorder="0" ></IframeResizer>
                 </figure>
               </Grid>
             </Grid>

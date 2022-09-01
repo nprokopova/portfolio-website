@@ -56,15 +56,6 @@ const themeConfig = {
       fontFamily: '"Raleway", "Helvetica", "Arial", sans-serif',
 
     },
-    breakpoints: {
-      values: {
-        xs: 0,
-        sm: 600,
-        md: 960,
-        lg: 1200,
-        xl: 1920,
-      },
-    },
     // Override component styles
     overrides: {
       // Global styles

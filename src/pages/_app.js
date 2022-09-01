@@ -9,8 +9,8 @@ function MyApp({ Component, pageProps }) {
       <>
         <Navbar
           color="default"
-          logo="https://i.postimg.cc/DzWrDspC/logo1.png"
-          logoInverted="https://i.postimg.cc/dtb48Jsk/logo1dark.png"
+          logo="/images/logo1.png"
+          logoInverted="/images/logo1dark.png"
         />
 
         <Component {...pageProps} />
@@ -20,8 +20,8 @@ function MyApp({ Component, pageProps }) {
           size="normal"
           bgImage=""
           bgImageOpacity={1}
-          logo="https://i.postimg.cc/DzWrDspC/logo1.png"
-          logoInverted="https://i.postimg.cc/dtb48Jsk/logo1dark.png"
+          logo="/images/logo1.png"
+          logoInverted="/images/logo1dark.png"
           sticky={true}
         />
       </>
