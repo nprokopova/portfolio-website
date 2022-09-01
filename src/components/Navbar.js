@@ -52,6 +52,7 @@ function Navbar(props) {
                 <img src={logo} alt="Logo" className={classes.logo} />
               </a>
             </Link>
+            
             <div className={classes.spacer} />
               <IconButton
                 color="inherit"
