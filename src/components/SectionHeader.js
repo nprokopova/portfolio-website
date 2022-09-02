@@ -3,6 +3,7 @@ import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 
+
 const useStyles = makeStyles((theme) => ({
   root: {
 
@@ -11,6 +12,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   subtitle: {
+    
     maxWidth: 700,
     [theme.breakpoints.up('md')]: {
       fontSize: '1.3rem'
@@ -18,13 +20,18 @@ const useStyles = makeStyles((theme) => ({
     display: "inline-block",
   },
   about: {
-    textShadow: '1px 1px 10px gray',
+    textShadow: '1px 1px 10px #424242',
+    lineHeight: 2.4,
     marginTop: '10px',
-    maxWidth: 700,
+    maxWidth: 900,
+    fontSize: '1rem',
     [theme.breakpoints.up('md')]: {
       fontSize: '1.3rem'
     },
     display: "inline-block",
+  },
+  title: {
+    fontSize: '2.4rem',
   }
 }));
 
@@ -48,6 +55,7 @@ function SectionHeader(props) {
         <Typography
           variant={`h${size}`}
           gutterBottom={props.subtitle ? true : false}
+          className={classes.title}
         >
           {title}
         </Typography>

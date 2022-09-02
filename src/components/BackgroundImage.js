@@ -4,7 +4,6 @@ import { makeStyles } from "@material-ui/core/styles";
 const useStyles = makeStyles((theme) => ({
   root: {
     content: "",
-    backgroundPosition: "center center",
     backgroundSize: "cover",
     top: 0,
     left: 0,
