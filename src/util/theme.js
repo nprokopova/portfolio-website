@@ -53,7 +53,7 @@ const themeConfig = {
   common: {
     typography: {
       fontSize: 14,
-      fontFamily: '"Raleway", "Helvetica", "Arial", sans-serif',
+      fontFamily: '"Quicksand", "Helvetica", "Arial", sans-serif',
 
     },
     // Override component styles
