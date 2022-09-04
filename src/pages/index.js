@@ -3,7 +3,6 @@ import Meta from "components/Meta";
 import HeroSection from "components/HeroSection";
 import Links from "components/Links";
 import Projects from "components/Projects";
-import img1 from '../../public/images/undraw_programmer_re_owql.svg'
 
 function IndexPage(props) {
   return (
@@ -16,7 +15,6 @@ function IndexPage(props) {
         bgImageOpacity={1}
         title="Nikol Prokopova"
         subtitle="Welcome to my portfolio website"
-        image={img1}
       />
       <Links
         bgColor="light"

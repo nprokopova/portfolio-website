@@ -8,8 +8,6 @@ import Section from "components/Section";
 import SectionHeader from "components/SectionHeader";
 import IframeResizer from "iframe-resizer-react";
 
-
-
 const useStyles = makeStyles((theme) => ({
   itemsContainer: {
     marginTop: 60,
@@ -25,55 +23,50 @@ const useStyles = makeStyles((theme) => ({
     "&:not(:last-child)": {
       marginBottom: `${theme.spacing(3)}px`,
     },
-    
-    
   },
   figure: {
     margin: "30px auto",
     height: "600px",
-    [theme.breakpoints.down('sm')]: {
-      padding: '0px',
+    [theme.breakpoints.down("sm")]: {
+      padding: "0px",
       margin: "0px",
     },
-
   },
   iframe: {
     border: "1px #ffffff none",
-    display: 'inherit',
+    display: "inherit",
     height: "100%",
     width: "100%",
     overflow: "hidden",
   },
   image: {
     margin: "100px auto",
-    maxWidth: '870px',
+    maxWidth: "870px",
     display: "block",
     height: "auto",
     width: "100%",
     opacity: 0.9,
-    
   },
   title: {
-    fontSize: '1.8rem'
-  }
-  
+    fontSize: "1.8rem",
+  },
 }));
 
 function Projects(props) {
   const classes = useStyles();
-  
+
   const items = [
-    {
-      title: "Pomodoro Clock",
-      description:
-        "This is a Pomodoro clock where the Session and Break length can be set by the user. Once a Session ends, a new Break starts and the two alternate until the Clock is Reset or Paused. An alarm sounds at the end of each Session and Break. The app was created using Gatsby.js and the styled-components library.",
-      src: "https://nprokopova.github.io/pomodoro-clock/",
-    },
     {
       title: "React Calculator",
       description:
         "This is a formula logic calculator app. The app was created using Next.js as a framework and the styled-components library.",
       src: "https://react-calculator-two-chi.vercel.app/",
+    },
+    {
+      title: "Pomodoro Clock",
+      description:
+        "This is a Pomodoro clock where the Session and Break length can be set by the user. Once a Session ends, a new Break starts and the two alternate until the Clock is Reset or Paused. An alarm sounds at the end of each Session and Break. The app was created using Gatsby.js and the styled-components library.",
+      src: "https://nprokopova.github.io/pomodoro-clock/",
     },
     {
       title: "Drum Machine",
@@ -124,7 +117,11 @@ function Projects(props) {
                     md: "left",
                   }}
                 >
-                  <Typography variant="h5" gutterBottom={true} className={classes.title}>
+                  <Typography
+                    variant="h5"
+                    gutterBottom={true}
+                    className={classes.title}
+                  >
                     {item.title}
                   </Typography>
                   <Typography variant="subtitle1">
@@ -134,7 +131,14 @@ function Projects(props) {
               </Grid>
               <Grid item={true} xs={12} md={6}>
                 <figure className={classes.figure}>
-                <IframeResizer src={item.src} autoResize={true} className={classes.iframe} scrolling="no" allowFullScreen frameBorder="0" ></IframeResizer>
+                  <IframeResizer
+                    src={item.src}
+                    autoResize={true}
+                    className={classes.iframe}
+                    scrolling="no"
+                    allowFullScreen
+                    frameBorder="0"
+                  ></IframeResizer>
                 </figure>
               </Grid>
             </Grid>
