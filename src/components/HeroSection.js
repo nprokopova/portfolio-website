@@ -17,6 +17,7 @@ const useStyles = makeStyles((theme) => ({
     color: 'white',
     height: '600px',
     display: 'flex',
+    alignItems: 'center',
   },
   image: {
     margin: "0 auto",
@@ -51,8 +52,9 @@ function HeroSection(props) {
           touchControls: true,
           gyroControls: false,
           baseColor: 0x1a59,
-          size: 1.30,
-          xOffset: 0.06
+          size: 1.70,
+          xOffset: 0.06,
+          mobileScale: 0.5,
         })
       );
     }
@@ -65,8 +67,6 @@ function HeroSection(props) {
     <Section
       bgColor={props.bgColor}
       size={props.size}
-      bgImage={props.bgImage}
-      bgImageOpacity={props.bgImageOpacity}
     >
       <div ref={myRef}>
         <Container className={classes.container}>
