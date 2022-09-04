@@ -31,7 +31,10 @@ const useStyles = makeStyles((theme) => ({
   figure: {
     margin: "30px auto",
     height: "600px",
-
+    [theme.breakpoints.down('sm')]: {
+      padding: '0px',
+      margin: "0px",
+    },
 
   },
   iframe: {
@@ -40,9 +43,19 @@ const useStyles = makeStyles((theme) => ({
     height: "100%",
     width: "100%",
     overflow: "hidden",
-    
+  },
+  image: {
+    margin: "100px auto",
+    maxWidth: '870px',
+    display: "block",
+    height: "auto",
+    width: "100%",
+    opacity: 0.9,
     
   },
+  title: {
+    fontSize: '1.8rem'
+  }
   
 }));
 
@@ -51,16 +64,16 @@ function Projects(props) {
   
   const items = [
     {
-      title: "React Calculator",
-      description:
-        "This is a formula logic calculator app. The app was created using Next.js as a framework and the styled-components library.",
-      src: "https://react-calculator-two-chi.vercel.app/",
-    },
-    {
       title: "Pomodoro Clock",
       description:
         "This is a Pomodoro clock where the Session and Break length can be set by the user. Once a Session ends, a new Break starts and the two alternate until the Clock is Reset or Paused. An alarm sounds at the end of each Session and Break. The app was created using Gatsby.js and the styled-components library.",
       src: "https://nprokopova.github.io/pomodoro-clock/",
+    },
+    {
+      title: "React Calculator",
+      description:
+        "This is a formula logic calculator app. The app was created using Next.js as a framework and the styled-components library.",
+      src: "https://react-calculator-two-chi.vercel.app/",
     },
     {
       title: "Drum Machine",
@@ -111,7 +124,7 @@ function Projects(props) {
                     md: "left",
                   }}
                 >
-                  <Typography variant="h5" gutterBottom={true}>
+                  <Typography variant="h5" gutterBottom={true} className={classes.title}>
                     {item.title}
                   </Typography>
                   <Typography variant="subtitle1">
