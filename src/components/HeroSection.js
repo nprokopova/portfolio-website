@@ -67,6 +67,7 @@ function HeroSection(props) {
     <Section
       bgColor={props.bgColor}
       size={props.size}
+      py={0}
     >
       <div ref={myRef}>
         <Container className={classes.container}>
