@@ -18,6 +18,10 @@ const useStyles = makeStyles((theme) => ({
     height: '600px',
     display: 'flex',
     alignItems: 'center',
+    textShadow: '1px 1px 5px black',
+    [theme.breakpoints.up('md')]: {
+      textShadow: 'none'
+    },
   },
   image: {
     margin: "0 auto",
@@ -52,7 +56,7 @@ function HeroSection(props) {
           touchControls: true,
           gyroControls: false,
           baseColor: 0x1a59,
-          size: 1.70,
+          size: 0.9,
           xOffset: 0.06,
           mobileScale: 0.5,
         })
