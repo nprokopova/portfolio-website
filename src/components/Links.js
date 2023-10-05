@@ -23,7 +23,7 @@ function Links(props) {
       name: "My CV",
       image: "https://cdn-icons-png.flaticon.com/512/5968/5968517.png",
       width: "100px",
-      href: "https://docs.google.com/document/d/1PBordiqD1vxbzMxmzFF_23V5cm41ben_S8AUOlBM9Xo/edit?usp=sharing"
+      href: "/files/Nikol_Prokopova_CV.pdf"
     },
 
   ];
@@ -47,7 +47,7 @@ function Links(props) {
             {items.map((item, index) => (
               <Grid item={true} xs={12} md="auto" key={index}>
                 <Box py={2} px={3}>
-                  <a href={item.href} target='_blank'><img src={item.image} width={item.width} alt={item.name} /></a>
+                  <a title={item.name} href={item.href} download target='_blank'><img src={item.image} width={item.width} alt={item.name} /></a>
                 </Box>
               </Grid>
             ))}
