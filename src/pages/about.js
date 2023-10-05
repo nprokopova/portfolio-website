@@ -12,7 +12,7 @@ function AboutPage(props) {
         bgImage="/images/undraw_alien_science_re_0f8q.svg"
         bgImageOpacity={0.2}
         title="About me"
-        subtitle="I am a Web Developer with a scientific background in molecular biology. I obtained a BSc degree in Biotechnology and I worked for a few years in the field of genetic sequencing. I decided to change my career as I have always been interested in programming. I have really enjoyed building web applications with React and I am now looking for new opportunities to apply and develop my skill set with this technology."
+        subtitle="I am a Front End Developer with an interesting background. I started off studying biotechnology and worked in the field of genetics on a custom DNA sequencing instrument. Due to my exposure to programming I realised it's a much better fit for me despite finding genetics extremely interesting. That is largely due to the way I think and my love for working with computers. I decided to pursue a career in Web Development and I've worked in the field for two years. I am proficient in Vanilla JS and React, as well as HTML and Vanilla CSS + libraries."
       />
 
     </>

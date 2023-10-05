@@ -57,6 +57,18 @@ function Projects(props) {
 
   const items = [
     {
+      title: "Future Lions",
+      description:
+        "An interactive, animated React app to demonstrate the creative concept of this year's Future Lions student competition. Parallax scrolling effects and lottie animations have been implemented.",
+      src: "https://futurelions.com",
+    },
+    {
+      title: "AKQA.com",
+      description:
+        "I have become the lead developer for AKQA.com, the company's main website. Its tech stack includes HTML, SCSS, Vanilla JavaScript, jQuery, Nunjucks and Contentful CMS.",
+      src: "https://akqa.com",
+    },
+    {
       title: "React Calculator",
       description:
         "This is a formula logic calculator app. The app was created using Next.js as a framework and the styled-components library.",
