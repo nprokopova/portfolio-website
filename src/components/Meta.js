@@ -9,7 +9,7 @@ function Meta(props) {
 
   const globalMeta = {
     siteName: "Nikol Prokopova's portfolio",
-    domain: "",
+    domain: "https://np-portfolio-website.vercel.app",
 
   };
 
