@@ -4,30 +4,9 @@ import Box from "@material-ui/core/Box";
 import Grid from "@material-ui/core/Grid";
 import Section from "components/Section";
 import SectionHeader from "components/SectionHeader";
+import { links } from "../assets/links"
 
 function Links(props) {
-  const items = [
-    {
-      name: "GitHub",
-      image: "https://play-lh.googleusercontent.com/PCpXdqvUWfCW1mXhH1Y_98yBpgsWxuTSTofy3NGMo9yBTATDyzVkqU580bfSln50bFU",
-      width: "100px",
-      href: "https://github.com/nprokopova"
-    },
-    {
-      name: "LinkedIn",
-      image: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/LinkedIn_logo_initials.png/640px-LinkedIn_logo_initials.png",
-      width: "100px",
-      href: "https://www.linkedin.com/in/nikol-prokopova-019b35180/"
-    },
-    {
-      name: "My CV",
-      image: "https://cdn-icons-png.flaticon.com/512/5968/5968517.png",
-      width: "100px",
-      href: "/files/Nikol_Prokopova_CV.pdf"
-    },
-
-  ];
-
   return (
     <Section
       bgColor={props.bgColor}
@@ -44,7 +23,7 @@ function Links(props) {
             textAlign="center"
           />
           <Grid container={true} justifyContent="center">
-            {items.map((item, index) => (
+            {links.map((item, index) => (
               <Grid item={true} xs={12} md="auto" key={index}>
                 <Box py={2} px={3}>
                   <a title={item.name} href={item.href} download target='_blank'><img src={item.image} width={item.width} alt={item.name} /></a>

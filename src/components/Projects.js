@@ -7,6 +7,8 @@ import { makeStyles } from "@material-ui/core/styles";
 import Section from "components/Section";
 import SectionHeader from "components/SectionHeader";
 import IframeResizer from "iframe-resizer-react";
+import Link from 'next/link';
+import { projects } from "../assets/projects"
 
 const useStyles = makeStyles((theme) => ({
   itemsContainer: {
@@ -14,6 +16,7 @@ const useStyles = makeStyles((theme) => ({
   },
   row: {
     flexDirection: "row",
+    cursor: "pointer",
     // Reverse every other row
     "&:nth-of-type(even)": {
       flexDirection: "row-reverse",
@@ -55,45 +58,6 @@ const useStyles = makeStyles((theme) => ({
 function Projects(props) {
   const classes = useStyles();
 
-  const items = [
-    {
-      title: "Future Lions",
-      description:
-        "An interactive, animated React app to demonstrate the creative concept of this year's Future Lions student competition. Parallax scrolling effects and lottie animations have been implemented.",
-      src: "https://futurelions.com",
-    },
-    {
-      title: "AKQA.com",
-      description:
-        "I have become the lead developer for AKQA.com, the company's main website. Its tech stack includes HTML, SCSS, Vanilla JavaScript, jQuery, Nunjucks and Contentful CMS.",
-      src: "https://akqa.com",
-    },
-    {
-      title: "React Calculator",
-      description:
-        "This is a formula logic calculator app. The app was created using Next.js as a framework and the styled-components library.",
-      src: "https://react-calculator-two-chi.vercel.app/",
-    },
-    {
-      title: "Pomodoro Clock",
-      description:
-        "This is a Pomodoro clock where the Session and Break length can be set by the user. Once a Session ends, a new Break starts and the two alternate until the Clock is Reset or Paused. An alarm sounds at the end of each Session and Break. The app was created using Gatsby.js and the styled-components library.",
-      src: "https://nprokopova.github.io/pomodoro-clock/",
-    },
-    {
-      title: "Drum Machine",
-      description:
-        "A drum machine with 9 clickable drum pad elements. A button click plays an audio clip and displays its description. Drum pads can also be trigged by associated keyboard keys.",
-      src: "https://codepen.io/nikol-prokopova/full/ZEaJmMG",
-    },
-    {
-      title: "Random Quote Generator",
-      description:
-        "A random quote machine build with React using the 'Quotable' API (https://github.com/lukePeavey/quotable) to fetch random quotes and their authors. A random background colour is generated once the 'New Quote' button is clicked.",
-      src: "https://codepen.io/nikol-prokopova/full/LYOLPPY",
-    },
-  ];
-
   return (
     <Section
       bgColor={props.bgColor}
@@ -113,47 +77,49 @@ function Projects(props) {
           disableGutters={true}
           className={classes.itemsContainer}
         >
-          {items.map((item, index) => (
-            <Grid
-              className={classes.row}
-              container={true}
-              item={true}
-              alignItems="center"
-              spacing={4}
-              key={index}
-            >
-              <Grid item={true} xs={12} md={6}>
-                <Box
-                  textAlign={{
-                    xs: "center",
-                    md: "left",
-                  }}
-                >
-                  <Typography
-                    variant="h5"
-                    gutterBottom={true}
-                    className={classes.title}
+          {projects.map((item, index) => (
+            <Link href={`/${item.title}`}>
+              <Grid
+                className={classes.row}
+                container={true}
+                item={true}
+                alignItems="center"
+                spacing={4}
+                key={index}
+              >
+                <Grid item={true} xs={12} md={6}>
+                  <Box
+                    textAlign={{
+                      xs: "center",
+                      md: "left",
+                    }}
                   >
-                    {item.title}
-                  </Typography>
-                  <Typography variant="subtitle1">
-                    {item.description}
-                  </Typography>
-                </Box>
+                    <Typography
+                      variant="h5"
+                      gutterBottom={true}
+                      className={classes.title}
+                    >
+                      {item.title}
+                    </Typography>
+                    <Typography variant="subtitle1">
+                      {item.description}
+                    </Typography>
+                  </Box>
+                </Grid>
+                <Grid item={true} xs={12} md={6}>
+                  <figure className={classes.figure}>
+                    <IframeResizer
+                      src={item.src}
+                      autoResize={true}
+                      className={classes.iframe}
+                      scrolling="no"
+                      allowFullScreen
+                      frameBorder="0"
+                    ></IframeResizer>
+                  </figure>
+                </Grid>
               </Grid>
-              <Grid item={true} xs={12} md={6}>
-                <figure className={classes.figure}>
-                  <IframeResizer
-                    src={item.src}
-                    autoResize={true}
-                    className={classes.iframe}
-                    scrolling="no"
-                    allowFullScreen
-                    frameBorder="0"
-                  ></IframeResizer>
-                </figure>
-              </Grid>
-            </Grid>
+            </Link>
           ))}
         </Container>
       </Container>
