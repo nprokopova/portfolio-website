@@ -8,7 +8,8 @@ import Section from "components/Section";
 import SectionHeader from "components/SectionHeader";
 import IframeResizer from "iframe-resizer-react";
 import Link from 'next/link';
-import { projects } from "../assets/projects"
+import { projects } from "../assets/projects";
+import slugify from 'react-slugify';
 
 const useStyles = makeStyles((theme) => ({
   itemsContainer: {
@@ -78,7 +79,7 @@ function Projects(props) {
           className={classes.itemsContainer}
         >
           {projects.map((item, index) => (
-            <Link href={`/${item.title}`}>
+            <Link href={`/${slugify(item.title)}`}>
               <Grid
                 className={classes.row}
                 container={true}

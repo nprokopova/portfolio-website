@@ -8,7 +8,8 @@ import { makeStyles } from "@material-ui/core/styles";
 import Section from "components/Section";
 import SectionHeader from "components/SectionHeader";
 import IframeResizer from "iframe-resizer-react";
-import { projects } from "../assets/projects"
+import { projects } from "../assets/projects";
+import slugify from 'react-slugify';
 
 const useStyles = makeStyles((theme) => ({
     itemsContainer: {
@@ -61,7 +62,7 @@ const DynamicPage = () => {
     let title, description, src, codeLink, additionalInfo;
 
     projects.map((item) => {
-        if (item.title === slug) {
+        if (slugify(item.title) === slug) {
             title = item.title;
             description = item.description;
             src = item.src;
