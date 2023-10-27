@@ -8,7 +8,7 @@ import Section from "components/Section";
 import SectionHeader from "components/SectionHeader";
 import IframeResizer from "iframe-resizer-react";
 import Link from 'next/link';
-import { projects } from "../assets/projects";
+import { projects } from "../data/projects";
 import slugify from 'react-slugify';
 
 const useStyles = makeStyles((theme) => ({

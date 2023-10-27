@@ -4,7 +4,7 @@ import Box from "@material-ui/core/Box";
 import Grid from "@material-ui/core/Grid";
 import Section from "components/Section";
 import SectionHeader from "components/SectionHeader";
-import { links } from "../assets/links"
+import { links } from "../data/links"
 
 function Links(props) {
   return (
