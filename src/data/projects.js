@@ -2,17 +2,19 @@ export const projects = [
     {
       title: "Future Lions",
       description:
-        "An interactive, animated React app to demonstrate the creative concept of this year's Future Lions student competition. Parallax scrolling effects and lottie animations have been implemented.",
+        "An interactive, animated React app to demonstrate the creative concept of that year's Future Lions student competition. Parallax scrolling effects and lottie animations were implemented.",
+      additionalInfo: "The website was built using React, TypeScript and SCSS.",
       src: "https://futurelions.com",
-      additionalInfo: "",
+      desktopVideo: '/videos/future_lions_desktop_1.mov',
+      mobileVideo: '/videos/future_lions_mobile_1.mov',
       codeLink: "",
     },
     {
       title: "AKQA.com",
       description:
-        "I have become the lead developer for AKQA.com, the company's main website. Its tech stack includes HTML, SCSS, Vanilla JavaScript, jQuery, Nunjucks and Contentful CMS.",
+        "I was the lead developer for AKQA.com, the company's main website. Its tech stack includes HTML, SCSS, Vanilla JavaScript, jQuery, Nunjucks and Contentful CMS.",
       src: "https://akqa.com",
-      additionalInfo: "",
+      additionalInfo: "I was responsible for mainintaining the codebase, adding new features and fixing bugs. I was also responsible for deployment and peer review, as well as writing Jira tickets.",
       codeLink: "",
     },
     {
@@ -34,17 +36,17 @@ export const projects = [
     {
       title: "Drum Machine",
       description:
-        "A drum machine with 9 clickable drum pad elements. A button click plays an audio clip and displays its description. Drum pads can also be trigged by associated keyboard keys.",
+        "My second project, also bery basic and unpolished. Can only get better from here!",
       src: "https://codepen.io/nikol-prokopova/full/ZEaJmMG",
-      additionalInfo: "",
+      additionalInfo: "A drum machine with 9 clickable drum pad elements. A button click plays an audio clip and displays its description. Drum pads can also be trigged by associated keyboard keys.",
       codeLink: "https://codepen.io/nikol-prokopova/pen/ZEaJmMG",
     },
     {
       title: "Random Quote Generator",
       description:
-        "A random quote machine build with React using the 'Quotable' API (https://github.com/lukePeavey/quotable) to fetch random quotes and their authors. A random background colour is generated once the 'New Quote' button is clicked.",
+        "My very first coding project! It is pretty basic but hey, you have to start somewhere.",
       src: "https://codepen.io/nikol-prokopova/full/LYOLPPY",
-      additionalInfo: "",
+      additionalInfo: "A random quote machine build with React using the 'Quotable' API (https://github.com/lukePeavey/quotable) to fetch random quotes and their authors. A random background colour is generated once the 'New Quote' button is clicked.",
       codeLink: "https://codepen.io/nikol-prokopova/pen/LYOLPPY",
     },
   ];

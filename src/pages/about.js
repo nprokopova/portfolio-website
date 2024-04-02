@@ -9,10 +9,19 @@ function AboutPage(props) {
       <HeroSection2
         bgColor="primary"
         size="large"
-        bgImage="/images/undraw_alien_science_re_0f8q.svg"
+        bgImage="/images/undraw_programmer_re_owql.svg"
         bgImageOpacity={0.2}
         title="About me"
-        subtitle="I am a Front End Developer with an interesting background. I started off studying biotechnology and worked in the field of genetics on a custom DNA sequencing instrument. Due to my exposure to programming I realised it's a much better fit for me despite finding genetics extremely interesting. That is largely due to the way I think and my love for working with computers. I decided to pursue a career in Web Development and I've worked in the field for two years. I am proficient in Vanilla JS and React, as well as HTML and Vanilla CSS + libraries."
+        subtitle={<><p>"I embarked on an unconventional journey that began with studying biotechnology and delving
+        into the intricacies of genetics, where I contributed to the development of a custom DNA
+        sequencing instrument. However, my exposure to programming ignited a realisation within me -
+        that my true passion lies in the realm of technology and computers.
+        </p>
+        <p>
+        Despite my fascination with genetics, I found my calling in web and app development,
+        leveraging my innate way of thinking and affinity for computing. Over the past two years, I've
+        honed my skills in Typescript and React, alongside mastering HTML and Vanilla CSS along with
+        various libraries."</p></>}
       />
 
     </>

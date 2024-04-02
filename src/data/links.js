@@ -15,6 +15,6 @@ export const links = [
       name: "My CV",
       image: "https://cdn-icons-png.flaticon.com/512/5968/5968517.png",
       width: "100px",
-      href: "/files/Nikol_Prokopova_CV.pdf"
+      href: "/files//Nikol_Prokopova_CV_2024_03.pdf"
     },
   ];

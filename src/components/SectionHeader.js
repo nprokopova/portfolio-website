@@ -20,7 +20,6 @@ const useStyles = makeStyles((theme) => ({
     display: "inline-block",
   },
   about: {
-    textShadow: '1px 1px 10px #424242',
     lineHeight: 2.4,
     marginTop: '10px',
     maxWidth: 900,
