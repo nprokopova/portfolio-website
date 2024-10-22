@@ -18,6 +18,7 @@ const useStyles = makeStyles((theme) => ({
   row: {
     flexDirection: "row",
     cursor: "pointer",
+    transition: 'transform 0.3s ease',
     // Reverse every other row
     "&:nth-of-type(even)": {
       flexDirection: "row-reverse",
@@ -27,10 +28,15 @@ const useStyles = makeStyles((theme) => ({
     "&:not(:last-child)": {
       marginBottom: `${theme.spacing(3)}px`,
     },
+    
+    "&:hover": {
+      transform: 'scale(1.01)'
+    },
   },
   figure: {
     margin: "30px auto",
     height: "600px",
+    overflow: "hidden",
     [theme.breakpoints.down("sm")]: {
       padding: "0px",
       margin: "0px",
@@ -47,8 +53,7 @@ const useStyles = makeStyles((theme) => ({
     margin: "100px auto",
     maxWidth: "870px",
     display: "block",
-    height: "auto",
-    width: "100%",
+    height: "100%",
     opacity: 0.9,
   },
   title: {
@@ -119,11 +124,11 @@ function Projects(props) {
                       frameBorder="0"
                     ></IframeResizer> : 
                     <img
-                      src={item.image}
+                      src={item.heroImage}
                       alt={item.title}
                       className={classes.image}
                     />
-                    }
+                    }     
                   </figure>
                 </Grid>
               </Grid>
