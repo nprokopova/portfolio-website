@@ -12,16 +12,7 @@ function AboutPage(props) {
         bgImage="/images/undraw_programmer_re_owql.svg"
         bgImageOpacity={0.2}
         title="About me"
-        subtitle={<><p>"I embarked on an unconventional journey that began with studying biotechnology and delving
-        into the intricacies of genetics, where I contributed to the development of a custom DNA
-        sequencing instrument. However, my exposure to programming ignited a realisation within me -
-        that my true passion lies in the realm of technology and computers.
-        </p>
-        <p>
-        Despite my fascination with genetics, I found my calling in web and app development,
-        leveraging my innate way of thinking and affinity for computing. Over the past two years, I've
-        honed my skills in Typescript and React, alongside mastering HTML and Vanilla CSS along with
-        various libraries."</p></>}
+        subtitle={<><p>I am a Software Developer with an interesting background. I studied biotechnology and worked in the field of genetics. Following my exposure to programming I realised it's a much better fit for me. That is largely due to the way I think and my love for working with computers. I thereafter pursued a career in programming. I have worked both on the front and the back end, creating web and desktop applications.</p></>}
       />
 
     </>

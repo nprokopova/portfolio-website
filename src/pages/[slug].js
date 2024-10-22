@@ -29,16 +29,16 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   description: {
-    maxWidth: "600px",
     margin: "auto",
-    fontSize: "1.1rem",
+    fontSize: "1.2rem",
   },
   figure: {
     margin: "30px auto",
     textAlign: "center",
     [theme.breakpoints.down("sm")]: {
       padding: "0px",
-      margin: "0px",
+
+      
     },
   },
   video: {
@@ -114,7 +114,7 @@ const DynamicPage = () => {
               md: "center",
             }}
           >
-            <Typography variant="subtitle1" className={classes.description}>
+            <Typography variant="body1" align='left' className={classes.description}>
               {description} {additionalInfo}
             </Typography>
 

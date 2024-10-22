@@ -15,19 +15,18 @@ const themeConfig = {
     palette: {
       type: "light",
       primary: {
-
         main: colors.grey["600"],
-
       },
       secondary: {
         main: colors.pink["500"],
       },
       background: {
-
         default: "#fff",
-
         paper: "#fff",
       },
+      hoverBg: {
+        default: colors.grey["100"],
+      }
     },
   },
 
@@ -46,6 +45,9 @@ const themeConfig = {
         default: colors.grey["900"],
         paper: colors.grey["800"],
       },
+      hoverBg: {
+        default: colors.grey["800"],
+      }
     },
   },
 
