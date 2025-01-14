@@ -15,7 +15,7 @@
     "next-images": "^1.8.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "react-hook-form": "6.15.1",
+    "react-hook-form": "^7.54.2",
     "react-slugify": "^3.0.2",
     "three": "^0.144.0",
     "use-local-storage-state": "9.0.2",
