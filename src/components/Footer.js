@@ -1,22 +1,21 @@
 import React from "react";
-import Container from "@material-ui/core/Container";
+import Container from "@mui/material/Container";
 import Link from "next/link";
-import Typography from "@material-ui/core/Typography";
-import LinkMui from "@material-ui/core/Link";
-import { makeStyles } from "@material-ui/core/styles";
+import Typography from "@mui/material/Typography";
+import LinkMui from "@mui/material/Link";
+import { makeStyles } from "@mui/styles";
 import Section from "components/Section";
 import { useDarkMode } from "util/theme";
 
 const useStyles = makeStyles((theme) => ({
   sticky: {
     marginTop: "auto",
-
   },
   wrapper: {
     display: "flex",
     flexWrap: "wrap",
-    alignItems: 'center',
-    justifyContent: 'center'
+    alignItems: "center",
+    justifyContent: "center",
   },
   item: {
     display: "flex",
@@ -26,14 +25,12 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: 24,
     [theme.breakpoints.up("sm")]: {
       flex: "50%",
-      marginBottom: 0
+      marginBottom: 0,
     },
   },
   logo: {
     display: "block",
-    height: '80px',
-
-    
+    height: "80px",
   },
   social: {
     alignItems: "flex-end",
@@ -61,7 +58,6 @@ const useStyles = makeStyles((theme) => ({
       order: 1,
     },
   },
-
 }));
 
 function Footer(props) {
@@ -84,27 +80,31 @@ function Footer(props) {
         <div className={classes.wrapper}>
           <div className={`${classes.item} ${classes.left}`}>
             <Link href="/">
-              <a>
-                <img src={logo} alt="Logo" className={classes.logo} />
-              </a>
+              <img src={logo} alt="Logo" className={classes.logo} />
             </Link>
           </div>
           <div
             className={`${classes.item} ${classes.right} ${classes.smallLinks}`}
           >
             <Typography>
-              <Link href="/about" passHref={true}>
-                <LinkMui className={classes.link}>About</LinkMui>
-              </Link>
+              <LinkMui href="/about" className={classes.link} underline="hover">
+                About
+              </LinkMui>
 
-              <Link href="/contact" passHref={true}>
-                <LinkMui className={classes.link}>Contact</LinkMui>
-              </Link>
+              <LinkMui
+                href="/contact"
+                className={classes.link}
+                underline="hover"
+              >
+                Contact
+              </LinkMui>
+
               <LinkMui
                 href="https://github.com/nprokopova/"
                 target="_blank"
                 rel="noreferrer"
                 className={classes.link}
+                underline="hover"
               >
                 GitHub
               </LinkMui>
@@ -113,12 +113,12 @@ function Footer(props) {
                 target="_blank"
                 rel="noreferrer"
                 className={classes.link}
+                underline="hover"
               >
                 LinkedIn
               </LinkMui>
             </Typography>
           </div>
-          
         </div>
       </Container>
     </Section>
