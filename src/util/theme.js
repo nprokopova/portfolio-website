@@ -3,17 +3,18 @@ import {
   useTheme,
   createTheme,
   ThemeProvider as MuiThemeProvider,
-} from "@material-ui/core/styles";
-import * as colors from "@material-ui/core/colors";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import useMediaQuery from "@material-ui/core/useMediaQuery";
+  StyledEngineProvider,
+} from "@mui/material/styles";
+import * as colors from "@mui/material/colors";
+import CssBaseline from "@mui/material/CssBaseline";
+import useMediaQuery from "@mui/material/useMediaQuery";
 import { createLocalStorageStateHook } from "use-local-storage-state";
 
 const themeConfig = {
   // Light theme
   light: {
     palette: {
-      type: "light",
+      mode: "light",
       primary: {
         main: colors.grey["600"],
       },
@@ -26,16 +27,15 @@ const themeConfig = {
       },
       hoverBg: {
         default: colors.grey["100"],
-      }
+      },
     },
   },
 
   // Dark theme
   dark: {
     palette: {
-      type: "dark",
+      mode: "dark",
       primary: {
-
         main: colors.grey["800"],
       },
       secondary: {
@@ -47,7 +47,7 @@ const themeConfig = {
       },
       hoverBg: {
         default: colors.grey["800"],
-      }
+      },
     },
   },
 
@@ -56,15 +56,13 @@ const themeConfig = {
     typography: {
       fontSize: 14,
       fontFamily: '"Quicksand", "Helvetica", "Arial", sans-serif',
-
     },
     // Override component styles
-    overrides: {
+    components: {
       // Global styles
       MuiCssBaseline: {
-        "@global": {
+        styleOverrides: {
           "#__next": {
-
             minHeight: "100vh",
             display: "flex",
             flexDirection: "column",
@@ -80,29 +78,24 @@ const themeConfig = {
 };
 
 function getTheme(name) {
-
   return createTheme({
     ...themeConfig[name],
 
     ...themeConfig.common,
-    overrides: {
-
-      ...(themeConfig[name] && themeConfig[name].overrides),
-      ...(themeConfig.common && themeConfig.common.overrides),
+    components: {
+      ...(themeConfig[name] && themeConfig[name].styleOverrides),
+      ...(themeConfig.common && themeConfig.common.styleOverrides),
     },
   });
 }
 
-
 const useDarkModeStorage = createLocalStorageStateHook("isDarkMode");
 
 export const ThemeProvider = (props) => {
-
   const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
 
   let [isDarkModeStored, setIsDarkModeStored] = useDarkModeStorage();
 
-  
   const hasHydrated = useHasHydrated();
   if (!hasHydrated) {
     isDarkModeStored = undefined;
@@ -115,29 +108,27 @@ export const ThemeProvider = (props) => {
   const themeName = isDarkMode ? "dark" : "light";
   const theme = getTheme(themeName);
 
-
   theme.palette.toggle = () => setIsDarkModeStored((value) => !value);
 
-
   return (
-    <MuiThemeProvider theme={theme}>
-
-      <CssBaseline />
-      {props.children}
-    </MuiThemeProvider>
+    <StyledEngineProvider injectFirst>
+      (
+      <MuiThemeProvider theme={theme}>
+        <CssBaseline />
+        {props.children}
+      </MuiThemeProvider>
+      )
+    </StyledEngineProvider>
   );
 };
 
-
 export function useDarkMode() {
-
   const theme = useTheme();
 
-  const isDarkMode = theme.palette.type === "dark";
+  const isDarkMode = theme.palette.mode === "dark";
 
   return { value: isDarkMode, toggle: theme.palette.toggle };
 }
-
 
 function useHasHydrated() {
   const [hasHydrated, setHasHydrated] = useState(false);
