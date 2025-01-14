@@ -1,44 +1,40 @@
 import React from "react";
-import Box from "@material-ui/core/Box";
-import Typography from "@material-ui/core/Typography";
-import { makeStyles } from "@material-ui/core/styles";
-
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+import { makeStyles } from "@mui/styles";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-
     "&:not(:last-child)": {
       marginBottom: "2rem",
     },
   },
   subtitle: {
-    
     maxWidth: 700,
-    [theme.breakpoints.up('md')]: {
-      fontSize: '1.3rem'
+    [theme.breakpoints.up("md")]: {
+      fontSize: "1.3rem",
     },
     display: "inline-block",
   },
   about: {
     lineHeight: 2.4,
-    marginTop: '10px',
+    marginTop: "10px",
     maxWidth: 900,
-    fontSize: '1rem',
-    [theme.breakpoints.up('md')]: {
-      fontSize: '1.3rem'
+    fontSize: "1rem",
+    [theme.breakpoints.up("md")]: {
+      fontSize: "1.3rem",
     },
     display: "inline-block",
   },
   title: {
-    fontSize: '2.4rem',
-  }
+    fontSize: "2.4rem",
+  },
 }));
 
 function SectionHeader(props) {
   const classes = useStyles();
 
   const { subtitle, title, size, className, ...otherProps } = props;
-
 
   if (!title && !subtitle) {
     return null;
@@ -61,7 +57,12 @@ function SectionHeader(props) {
       )}
 
       {subtitle && (
-        <Typography variant="subtitle1" className={props.className? classes[props.className]: classes.subtitle}>
+        <Typography
+          variant="subtitle1"
+          className={
+            props.className ? classes[props.className] : classes.subtitle
+          }
+        >
           {subtitle}
         </Typography>
       )}

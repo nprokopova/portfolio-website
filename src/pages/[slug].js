@@ -1,11 +1,10 @@
 import { useRouter } from "next/router";
 import React from "react";
-import Container from "@material-ui/core/Container";
-import MuiLink from "@material-ui/core/Link";
-import Box from "@material-ui/core/Box";
-import Typography from "@material-ui/core/Typography";
-import CardMedia from "@material-ui/core/CardMedia";
-import { makeStyles } from "@material-ui/core/styles";
+import Container from "@mui/material/Container";
+import MuiLink from "@mui/material/Link";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+import makeStyles from "@mui/styles/makeStyles";
 import Section from "components/Section";
 import SectionHeader from "components/SectionHeader";
 import IframeResizer from "iframe-resizer-react";
@@ -25,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
 
     // Spacing between rows
     "&:not(:last-child)": {
-      marginBottom: `${theme.spacing(3)}px`,
+      marginBottom: theme.spacing(3),
     },
   },
   description: {
@@ -35,10 +34,8 @@ const useStyles = makeStyles((theme) => ({
   figure: {
     margin: "30px auto",
     textAlign: "center",
-    [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.down("md")]: {
       padding: "0px",
-
-      
     },
   },
   video: {
@@ -114,7 +111,11 @@ const DynamicPage = () => {
               md: "center",
             }}
           >
-            <Typography variant="body1" align='left' className={classes.description}>
+            <Typography
+              variant="body1"
+              align="left"
+              className={classes.description}
+            >
               {description} {additionalInfo}
             </Typography>
 
@@ -139,7 +140,6 @@ const DynamicPage = () => {
             ) : (
               <IframeResizer
                 src={src}
-                
                 className={classes.iframe}
                 allowFullScreen
               ></IframeResizer>
@@ -148,7 +148,10 @@ const DynamicPage = () => {
 
           {mobileVideo && (
             <figure className={classes.mobileVideoWrapper}>
-              <Typography variant="subtitle1" className={classes.mobileVideoTitle}>
+              <Typography
+                variant="subtitle1"
+                className={classes.mobileVideoTitle}
+              >
                 The mobile version of the website.
               </Typography>
               <video

@@ -1,10 +1,11 @@
 import React from "react";
-import Container from "@material-ui/core/Container";
-import Grid from "@material-ui/core/Grid";
-import Box from "@material-ui/core/Box";
-import LinkMui from "@material-ui/core/Link";
+import Container from "@mui/material/Container";
+import Grid from "@mui/material/Grid";
+import Box from "@mui/material/Box";
+import LinkMui from "@mui/material/Link";
 import Link from "next/link";
-import { makeStyles, withTheme } from "@material-ui/core/styles";
+import { makeStyles } from "@mui/styles";
+import withTheme from "@mui/styles/withTheme";
 import Section from "components/Section";
 import SectionHeader from "components/SectionHeader";
 import { useState, useEffect, useRef } from "react";
@@ -13,14 +14,14 @@ import * as THREE from "three";
 
 const useStyles = makeStyles((theme) => ({
   container: {
-    padding: `0 ${theme.spacing(3)}px`,
-    color: 'white',
-    height: '600px',
-    display: 'flex',
-    alignItems: 'center',
-    textShadow: '1px 1px 5px black',
-    [theme.breakpoints.up('md')]: {
-      textShadow: 'none'
+    padding: `0 ${theme.spacing(3)}`,
+    color: "white",
+    height: "600px",
+    display: "flex",
+    alignItems: "center",
+    textShadow: "1px 1px 5px black",
+    [theme.breakpoints.up("md")]: {
+      textShadow: "none",
     },
   },
   image: {
@@ -29,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
     display: "block",
     height: "auto",
     width: "100%",
-    visibility: 'hidden'
+    visibility: "hidden",
   },
   link: {
     color: "inherit",
@@ -45,7 +46,7 @@ function HeroSection(props) {
   const classes = useStyles();
   const [vantaEffect, setVantaEffect] = useState(0);
   const myRef = useRef(null);
-  
+
   useEffect(() => {
     if (!vantaEffect) {
       setVantaEffect(
@@ -68,11 +69,7 @@ function HeroSection(props) {
   }, [vantaEffect]);
 
   return (
-    <Section
-      bgColor={props.bgColor}
-      size={props.size}
-      py={0}
-    >
+    <Section bgColor={props.bgColor} size={props.size} py={0}>
       <div ref={myRef}>
         <Container className={classes.container}>
           <Grid container={true} alignItems="center" spacing={6}>
@@ -89,22 +86,29 @@ function HeroSection(props) {
                   subtitle={props.subtitle}
                   size={4}
                 />
-                <Link href="/about" passHref={true}>
-                  <LinkMui className={classes.link}>About Me</LinkMui>
-                </Link>
 
-                <Link href="/contact" passHref={true}>
-                  <LinkMui className={classes.link}>Contact</LinkMui>
-                </Link>
+                <LinkMui
+                  href="/about"
+                  className={classes.link}
+                  underline="hover"
+                >
+                  About Me
+                </LinkMui>
+
+                <LinkMui
+                  href="/contact"
+                  className={classes.link}
+                  underline="hover"
+                >
+                  Contact
+                </LinkMui>
               </Box>
             </Grid>
 
-            <Grid item={true} xs={12} md={true}>
-            </Grid>
+            <Grid item={true} xs={12} md={true}></Grid>
           </Grid>
         </Container>
-        </div>
-      
+      </div>
     </Section>
   );
 }

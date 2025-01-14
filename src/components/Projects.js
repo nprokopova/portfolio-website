@@ -1,15 +1,15 @@
 import React from "react";
-import Container from "@material-ui/core/Container";
-import Grid from "@material-ui/core/Grid";
-import Box from "@material-ui/core/Box";
-import Typography from "@material-ui/core/Typography";
-import { makeStyles } from "@material-ui/core/styles";
+import Container from "@mui/material/Container";
+import Grid from "@mui/material/Grid";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+import { makeStyles } from "@mui/styles";
 import Section from "components/Section";
 import SectionHeader from "components/SectionHeader";
 import IframeResizer from "iframe-resizer-react";
-import Link from 'next/link';
+import Link from "next/link";
 import { projects } from "../data/projects";
-import slugify from 'react-slugify';
+import slugify from "react-slugify";
 
 const useStyles = makeStyles((theme) => ({
   itemsContainer: {
@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
   row: {
     flexDirection: "row",
     cursor: "pointer",
-    transition: 'transform 0.3s ease',
+    transition: "transform 0.3s ease",
     // Reverse every other row
     "&:nth-of-type(even)": {
       flexDirection: "row-reverse",
@@ -26,18 +26,18 @@ const useStyles = makeStyles((theme) => ({
 
     // Spacing between rows
     "&:not(:last-child)": {
-      marginBottom: `${theme.spacing(3)}px`,
+      marginBottom: theme.spacing(3),
     },
-    
+
     "&:hover": {
-      transform: 'scale(1.01)'
+      transform: "scale(1.01)",
     },
   },
   figure: {
     margin: "30px auto",
     height: "600px",
     overflow: "hidden",
-    [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.down("md")]: {
       padding: "0px",
       margin: "0px",
     },
@@ -84,7 +84,11 @@ function Projects(props) {
           className={classes.itemsContainer}
         >
           {projects.map((item, index) => (
-            <Link href={`/${slugify(item.title)}`}>
+            <Link
+              legacyBehavior
+              href={`/${slugify(item.title)}`}
+              key={`${item.title}-${index}`}
+            >
               <Grid
                 className={classes.row}
                 container={true}
@@ -114,21 +118,22 @@ function Projects(props) {
                 </Grid>
                 <Grid item={true} xs={12} md={6}>
                   <figure className={classes.figure}>
-                    {item.src ? 
-                    <IframeResizer
-                      src={item.src}
-                      autoResize={true}
-                      className={classes.iframe}
-                      scrolling="no"
-                      allowFullScreen
-                      frameBorder="0"
-                    ></IframeResizer> : 
-                    <img
-                      src={item.heroImage}
-                      alt={item.title}
-                      className={classes.image}
-                    />
-                    }     
+                    {item.src ? (
+                      <IframeResizer
+                        src={item.src}
+                        autoResize={true}
+                        className={classes.iframe}
+                        scrolling="no"
+                        allowFullScreen
+                        frameBorder="0"
+                      ></IframeResizer>
+                    ) : (
+                      <img
+                        src={item.heroImage}
+                        alt={item.title}
+                        className={classes.image}
+                      />
+                    )}
                   </figure>
                 </Grid>
               </Grid>
