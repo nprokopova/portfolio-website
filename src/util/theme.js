@@ -112,12 +112,10 @@ export const ThemeProvider = (props) => {
 
   return (
     <StyledEngineProvider injectFirst>
-      (
       <MuiThemeProvider theme={theme}>
         <CssBaseline />
         {props.children}
       </MuiThemeProvider>
-      )
     </StyledEngineProvider>
   );
 };
