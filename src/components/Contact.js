@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Box from "@mui/material/Box";
-import Alert from '@mui/material/Alert';
+import Alert from "@mui/material/Alert";
 import Grid from "@mui/material/Grid";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
@@ -58,12 +58,10 @@ function Contact(props) {
                 type="text"
                 label="Name"
                 name="name"
-                error={errors.name ? true : false}
-                helperText={errors.name && errors.name.message}
+                error={errors?.name ? true : false}
+                helperText={errors?.name && errors.name.message}
                 fullWidth={true}
-                inputRef={register({
-                  required: "Please enter your name",
-                })}
+                {...register("Please enter your name", { required: true })}
               />
             </Grid>
           )}
@@ -74,12 +72,10 @@ function Contact(props) {
               type="email"
               label="Email"
               name="email"
-              error={errors.email ? true : false}
-              helperText={errors.email && errors.email.message}
+              error={errors?.email ? true : false}
+              helperText={errors?.email && errors.email.message}
               fullWidth={true}
-              inputRef={register({
-                required: "Please enter your email",
-              })}
+              {...register("Please enter your email", { required: true })}
             />
           </Grid>
           <Grid item={true} xs={12}>
@@ -90,12 +86,10 @@ function Contact(props) {
               name="message"
               multiline={true}
               rows={5}
-              error={errors.message ? true : false}
-              helperText={errors.message && errors.message.message}
+              error={errors?.message ? true : false}
+              helperText={errors?.message && errors.message.message}
               fullWidth={true}
-              inputRef={register({
-                required: "Please enter a message",
-              })}
+              {...register("Please enter a message", { required: true })}
             />
           </Grid>
           <Grid item={true} xs={12}>
