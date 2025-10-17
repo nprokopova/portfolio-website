@@ -4,15 +4,13 @@ import HeroSection from "components/HeroSection";
 import Links from "components/Links";
 import Projects from "components/Projects";
 
-function IndexPage(props) {
+const IndexPage = () => {
   return (
     <>
       <Meta />
       <HeroSection
         bgColor="default"
-        size="medium"
-        bgImage=""
-        bgImageOpacity={1}
+        size="auto"
         title="Nikol Prokopova"
         subtitle="Welcome to my portfolio website"
       />
@@ -33,6 +31,6 @@ function IndexPage(props) {
       />
     </>
   );
-}
+};
 
 export default IndexPage;

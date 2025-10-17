@@ -2,7 +2,7 @@ import React from "react";
 import Meta from "components/Meta";
 import ContactSection from "components/ContactSection";
 
-function ContactPage(props) {
+const ContactPage = () => {
   return (
     <>
       <Meta title="Contact" />
@@ -14,11 +14,10 @@ function ContactPage(props) {
         title="Contact Me"
         subtitle=""
         buttonText="Send message"
-        buttonColor="primary"
         showNameField={true}
       />
     </>
   );
-}
+};
 
 export default ContactPage;

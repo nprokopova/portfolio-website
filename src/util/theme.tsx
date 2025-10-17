@@ -1,16 +1,20 @@
-import React, { useEffect, useLayoutEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 import {
   useTheme,
   createTheme,
-  ThemeProvider as MuiThemeProvider,
-  StyledEngineProvider,
+  ThemeOptions,
+  Theme as MuiTheme,
 } from "@mui/material/styles";
 import * as colors from "@mui/material/colors";
-import CssBaseline from "@mui/material/CssBaseline";
-import useMediaQuery from "@mui/material/useMediaQuery";
 import { createLocalStorageStateHook } from "use-local-storage-state";
 
-const themeConfig = {
+interface Theme extends MuiTheme {
+  palette: MuiTheme["palette"] & {
+    toggle: () => void;
+  };
+}
+
+const themeConfig: Record<string, ThemeOptions> = {
   // Light theme
   light: {
     palette: {
@@ -24,9 +28,6 @@ const themeConfig = {
       background: {
         default: "#fff",
         paper: "#fff",
-      },
-      hoverBg: {
-        default: colors.grey["100"],
       },
     },
   },
@@ -44,9 +45,6 @@ const themeConfig = {
       background: {
         default: colors.grey["900"],
         paper: colors.grey["800"],
-      },
-      hoverBg: {
-        default: colors.grey["800"],
       },
     },
   },
@@ -77,58 +75,32 @@ const themeConfig = {
   },
 };
 
-function getTheme(name) {
-  return createTheme({
-    ...themeConfig[name],
+export function getTheme(name: string) {
+  const namedConfig = themeConfig[name] || {};
+  const commonConfig = themeConfig.common || {};
 
-    ...themeConfig.common,
+  return createTheme({
+    ...namedConfig,
+    ...commonConfig,
     components: {
-      ...(themeConfig[name] && themeConfig[name].styleOverrides),
-      ...(themeConfig.common && themeConfig.common.styleOverrides),
+      ...namedConfig.components,
+      ...commonConfig.components,
     },
   });
 }
 
-const useDarkModeStorage = createLocalStorageStateHook("isDarkMode");
-
-export const ThemeProvider = (props) => {
-  const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
-
-  let [isDarkModeStored, setIsDarkModeStored] = useDarkModeStorage();
-
-  const hasHydrated = useHasHydrated();
-  if (!hasHydrated) {
-    isDarkModeStored = undefined;
-  }
-
-  const isDarkMode =
-    isDarkModeStored === undefined ? prefersDarkMode : isDarkModeStored;
-
-  // Get MUI theme object
-  const themeName = isDarkMode ? "dark" : "light";
-  const theme = getTheme(themeName);
-
-  theme.palette.toggle = () => setIsDarkModeStored((value) => !value);
-
-  return (
-    <StyledEngineProvider injectFirst>
-      <MuiThemeProvider theme={theme}>
-        <CssBaseline />
-        {props.children}
-      </MuiThemeProvider>
-    </StyledEngineProvider>
-  );
-};
+export const useDarkModeStorage =
+  createLocalStorageStateHook<boolean>("isDarkMode");
 
 export function useDarkMode() {
-  const theme = useTheme();
+  const theme = useTheme() as Theme;
 
   const isDarkMode = theme.palette.mode === "dark";
 
   return { value: isDarkMode, toggle: theme.palette.toggle };
 }
 
-function useHasHydrated() {
+export function useHasHydrated() {
   const [hasHydrated, setHasHydrated] = useState(false);
 
   const isServer = typeof window === "undefined";

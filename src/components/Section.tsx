@@ -1,11 +1,21 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import Box from "@mui/material/Box";
-import { emphasize } from "@mui/material/styles";
+import { emphasize, Theme } from "@mui/material/styles";
 import { makeStyles } from "@mui/styles";
 import BackgroundImage from "components/BackgroundImage";
 import { capitalize } from "@mui/material/utils";
 
-const useStyles = makeStyles((theme) => ({
+interface SectionProps {
+  bgColor?: string;
+  bgImage?: string;
+  bgImageOpacity?: number;
+  size?: "normal" | "medium" | "large" | "auto";
+  className?: string;
+  children: ReactNode;
+  [key: string]: any;
+}
+
+const useStyles = makeStyles((theme: Theme) => ({
   root: {
     position: "relative",
 
@@ -25,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
       color: theme.palette.getContrastText(value),
     };
     return acc;
-  }, {}),
+  }, {} as Record<string, Record<string, string>>),
 
   colorInherit: {
     color: "inherit",
@@ -37,42 +47,43 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function Section(props) {
+const Section = ({
+  bgColor = "default",
+  bgImage,
+  bgImageOpacity,
+  size = "normal",
+  className,
+  children,
+}: SectionProps) => {
   const classes = useStyles();
 
-  const {
-    bgColor = "default",
-    bgImage,
-    bgImageOpacity,
-    size = "normal",
-    className,
-    children,
-    ...otherProps
-  } = props;
+  const verticalPadding: Record<string, number | { xs: number; sm?: number }> =
+    {
+      normal: { xs: 6 },
+      medium: { xs: 6, sm: 10 },
+      large: { xs: 6, sm: 20 },
+      auto: 0,
+    };
 
-  const verticalPadding = {
-    normal: { xs: 6 },
-    medium: { xs: 6, sm: 10 },
-    large: { xs: 6, sm: 20 },
-    auto: 0,
-  }[size];
+  const paddingValue = verticalPadding[size];
 
   return (
     <Box
       component="section"
-      py={verticalPadding}
+      py={paddingValue}
       className={
         classes.root +
-        ` ${classes[`color${capitalize(bgColor)}`]}` +
+        ` ${(classes as any)[`color${capitalize(bgColor)}`]}` +
         (className ? ` ${className}` : "")
       }
-      {...otherProps}
     >
-      {bgImage && <BackgroundImage image={bgImage} opacity={bgImageOpacity} />}
+      {bgImage && (
+        <BackgroundImage imageUrl={bgImage} opacity={bgImageOpacity} />
+      )}
 
-      {props.children}
+      {children}
     </Box>
   );
-}
+};
 
 export default Section;

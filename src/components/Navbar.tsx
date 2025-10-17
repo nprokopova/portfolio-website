@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import AppBar from "@mui/material/AppBar";
 import Container from "@mui/material/Container";
 import Toolbar from "@mui/material/Toolbar";
@@ -9,8 +9,9 @@ import WbSunnyIcon from "@mui/icons-material/WbSunny";
 import { makeStyles } from "@mui/styles";
 import Section from "components/Section";
 import { useDarkMode } from "util/theme";
+import { Theme } from "@mui/material/styles";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((theme: Theme) => ({
   logo: {
     height: 80,
     marginRight: theme.spacing(2),
@@ -30,23 +31,28 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function Navbar(props) {
+interface NavbarProps {
+  logo: string;
+  logoInverted?: string;
+  color?: "default" | "light" | "primary" | "secondary" | "transparent";
+}
+
+function Navbar({ logo, logoInverted, color }: NavbarProps) {
   const classes = useStyles();
 
   const darkMode = useDarkMode();
 
   // Use inverted logo if specified
   // and we are in dark mode
-  const logo =
-    props.logoInverted && darkMode.value ? props.logoInverted : props.logo;
+  const themeLogo = logoInverted && darkMode.value ? logoInverted : logo;
 
   return (
-    <Section bgColor={props.color} size="auto" className={classes.section}>
+    <Section bgColor={color} size="auto" className={classes.section}>
       <AppBar position="static" color="transparent" elevation={0}>
         <Container disableGutters={true}>
           <Toolbar>
             <Link href="/">
-              <img src={logo} alt="Logo" className={classes.logo} />
+              <img src={themeLogo} alt="Logo" className={classes.logo} />
             </Link>
 
             <div className={classes.spacer} />

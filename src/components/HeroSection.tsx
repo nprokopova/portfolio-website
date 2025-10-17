@@ -1,18 +1,20 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
+import Script from "next/script";
+
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import LinkMui from "@mui/material/Link";
-import Link from "next/link";
 import { makeStyles } from "@mui/styles";
-import withTheme from "@mui/styles/withTheme";
+
+import * as THREE from "three";
+import HALO from "vanta/dist/vanta.halo.min";
+import { Theme } from "@mui/material/styles";
+
 import Section from "components/Section";
 import SectionHeader from "components/SectionHeader";
-import { useState, useEffect, useRef } from "react";
-import HALO from "vanta/dist/vanta.halo.min";
-import * as THREE from "three";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((theme: Theme) => ({
   container: {
     padding: `0 ${theme.spacing(3)}`,
     color: "white",
@@ -42,9 +44,16 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function HeroSection(props) {
+interface HeroSectionProps {
+  title: string;
+  subtitle?: string;
+  bgColor?: "default" | "light" | "primary" | "secondary" | "transparent";
+  size?: "normal" | "medium" | "large" | "auto";
+}
+
+function HeroSection({ title, subtitle, bgColor, size }: HeroSectionProps) {
   const classes = useStyles();
-  const [vantaEffect, setVantaEffect] = useState(0);
+  const [vantaEffect, setVantaEffect] = useState<{ destroy: () => void }>();
   const myRef = useRef(null);
 
   useEffect(() => {
@@ -57,19 +66,21 @@ function HeroSection(props) {
           touchControls: true,
           gyroControls: false,
           baseColor: 0x1a59,
-          size: 0.9,
+          size: 0.6,
           xOffset: 0.06,
           mobileScale: 0.5,
         })
       );
     }
     return () => {
-      if (vantaEffect) vantaEffect.destroy();
+      if (vantaEffect) {
+        vantaEffect.destroy();
+      }
     };
   }, [vantaEffect]);
 
   return (
-    <Section bgColor={props.bgColor} size={props.size} py={0}>
+    <Section bgColor={bgColor} size={size} py={0}>
       <div ref={myRef}>
         <Container className={classes.container}>
           <Grid container={true} alignItems="center" spacing={6}>
@@ -81,11 +92,7 @@ function HeroSection(props) {
               md={6}
             >
               <Box textAlign={{ xs: "center", md: "left" }}>
-                <SectionHeader
-                  title={props.title}
-                  subtitle={props.subtitle}
-                  size={4}
-                />
+                <SectionHeader title={title} subtitle={subtitle} size={4} />
 
                 <LinkMui
                   href="/about"
