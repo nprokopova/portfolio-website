@@ -1,5 +1,9 @@
 // Make an API request to any external URL
-export function apiRequestExternal(url, method = "GET", data) {
+export function apiRequestExternal(
+  url: string,
+  method: string = "GET",
+  data?: any
+): Promise<any> {
   return fetch(url, {
     method: method,
     headers: {

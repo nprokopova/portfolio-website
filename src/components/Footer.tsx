@@ -6,8 +6,9 @@ import LinkMui from "@mui/material/Link";
 import { makeStyles } from "@mui/styles";
 import Section from "components/Section";
 import { useDarkMode } from "util/theme";
+import { Theme } from "@mui/material/styles";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((theme: Theme) => ({
   sticky: {
     marginTop: "auto",
   },
@@ -31,6 +32,9 @@ const useStyles = makeStyles((theme) => ({
   logo: {
     display: "block",
     height: "80px",
+    [theme.breakpoints.down("md")]: {
+      height: "60px",
+    },
   },
   social: {
     alignItems: "flex-end",
@@ -60,27 +64,44 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function Footer(props) {
+interface FooterProps {
+  bgColor?: string;
+  size?: "auto" | "normal" | "medium" | "large";
+  bgImage?: string;
+  bgImageOpacity?: number;
+  logo: string;
+  logoInverted?: string;
+  sticky?: boolean;
+}
+
+const Footer = ({
+  bgColor,
+  size,
+  bgImage,
+  bgImageOpacity,
+  logo,
+  logoInverted,
+  sticky,
+}: FooterProps) => {
   const classes = useStyles();
 
   const darkMode = useDarkMode();
 
-  const logo =
-    props.logoInverted && darkMode.value ? props.logoInverted : props.logo;
+  const themeLogo = logoInverted && darkMode.value ? logoInverted : logo;
 
   return (
     <Section
-      bgColor={props.bgColor}
-      size={props.size}
-      bgImage={props.bgImage}
-      bgImageOpacity={props.bgImageOpacity}
-      className={props.sticky && classes.sticky}
+      bgColor={bgColor}
+      size={size}
+      bgImage={bgImage}
+      bgImageOpacity={bgImageOpacity}
+      className={sticky ? classes.sticky : undefined}
     >
       <Container>
         <div className={classes.wrapper}>
           <div className={`${classes.item} ${classes.left}`}>
             <Link href="/">
-              <img src={logo} alt="Logo" className={classes.logo} />
+              <img src={themeLogo} alt="Logo" className={classes.logo} />
             </Link>
           </div>
           <div
@@ -123,6 +144,6 @@ function Footer(props) {
       </Container>
     </Section>
   );
-}
+};
 
 export default Footer;

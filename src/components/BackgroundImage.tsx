@@ -14,19 +14,21 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function BackgroundImage(props) {
-  const classes = useStyles();
+interface BackgroundImageProps {
+  imageUrl: string;
+  opacity?: number;
+}
 
-  const { image, opacity, ...otherProps } = props;
+function BackgroundImage({ imageUrl, opacity }: BackgroundImageProps) {
+  const classes = useStyles();
 
   return (
     <div
       className={classes.root}
       style={{
-        backgroundImage: `url(${image})`,
+        backgroundImage: `url(${imageUrl})`,
         opacity: opacity,
       }}
-      {...otherProps}
     />
   );
 }

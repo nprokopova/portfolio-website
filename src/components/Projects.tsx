@@ -10,8 +10,9 @@ import IframeResizer from "iframe-resizer-react";
 import Link from "next/link";
 import { projects } from "../data/projects";
 import slugify from "react-slugify";
+import { Theme } from "@mui/material/styles";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((theme: Theme) => ({
   itemsContainer: {
     marginTop: 60,
   },
@@ -27,10 +28,6 @@ const useStyles = makeStyles((theme) => ({
     // Spacing between rows
     "&:not(:last-child)": {
       marginBottom: theme.spacing(3),
-    },
-
-    "&:hover": {
-      transform: "scale(1.01)",
     },
   },
   figure: {
@@ -61,20 +58,36 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function Projects(props) {
+interface ProjectsProps {
+  title: string;
+  subtitle?: string;
+  bgColor?: "default" | "light" | "primary" | "secondary" | "transparent";
+  size?: "normal" | "medium" | "large" | "auto";
+  bgImage?: string;
+  bgImageOpacity?: number;
+}
+
+function Projects({
+  title,
+  subtitle,
+  bgColor,
+  size,
+  bgImage,
+  bgImageOpacity,
+}: ProjectsProps) {
   const classes = useStyles();
 
   return (
     <Section
-      bgColor={props.bgColor}
-      size={props.size}
-      bgImage={props.bgImage}
-      bgImageOpacity={props.bgImageOpacity}
+      bgColor={bgColor}
+      size={size}
+      bgImage={bgImage}
+      bgImageOpacity={bgImageOpacity}
     >
       <Container>
         <SectionHeader
-          title={props.title}
-          subtitle={props.subtitle}
+          title={title}
+          subtitle={subtitle}
           size={4}
           textAlign="center"
         />
@@ -118,20 +131,18 @@ function Projects(props) {
                 </Grid>
                 <Grid item={true} xs={12} md={6}>
                   <figure className={classes.figure}>
-                    {item.src ? (
-                      <IframeResizer
-                        src={item.src}
-                        autoResize={true}
-                        className={classes.iframe}
-                        scrolling="no"
-                        allowFullScreen
-                        frameBorder="0"
-                      ></IframeResizer>
-                    ) : (
+                    {item.heroImage ? (
                       <img
                         src={item.heroImage}
                         alt={item.title}
                         className={classes.image}
+                      />
+                    ) : (
+                      <IframeResizer
+                        src={item.src}
+                        autoResize={true}
+                        className={classes.iframe}
+                        allowFullScreen
                       />
                     )}
                   </figure>

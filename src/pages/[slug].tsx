@@ -4,14 +4,15 @@ import Container from "@mui/material/Container";
 import MuiLink from "@mui/material/Link";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import makeStyles from "@mui/styles/makeStyles";
+import { makeStyles } from "@mui/styles";
+import { Theme } from "@mui/material/styles";
 import Section from "components/Section";
 import SectionHeader from "components/SectionHeader";
 import IframeResizer from "iframe-resizer-react";
 import { projects } from "../data/projects";
 import slugify from "react-slugify";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((theme: Theme) => ({
   itemsContainer: {
     marginTop: 60,
   },
@@ -53,7 +54,6 @@ const useStyles = makeStyles((theme) => ({
   iframe: {
     border: "1px #ffffff none",
     display: "inherit",
-    height: "100%",
     width: "100%",
     height: "600px",
   },
@@ -74,25 +74,17 @@ const DynamicPage = () => {
   const router = useRouter();
   const { slug } = router.query;
   const classes = useStyles();
-  let title,
+  const project = projects.find((item) => slugify(item.title) === slug);
+  const {
+    title,
     description,
     src,
     codeLink,
     additionalInfo,
+    heroImage,
     mobileVideo,
-    desktopVideo;
-
-  projects.map((item) => {
-    if (slugify(item.title) === slug) {
-      title = item.title;
-      description = item.description;
-      src = item.src;
-      codeLink = item.codeLink;
-      additionalInfo = item.additionalInfo;
-      mobileVideo = item.mobileVideo;
-      desktopVideo = item.desktopVideo;
-    }
-  });
+    desktopVideo,
+  } = project ?? {};
 
   return (
     <Section>
@@ -137,12 +129,14 @@ const DynamicPage = () => {
                 muted
                 src={desktopVideo}
               ></video>
-            ) : (
+            ) : src ? (
               <IframeResizer
                 src={src}
                 className={classes.iframe}
                 allowFullScreen
               ></IframeResizer>
+            ) : (
+              <img src={heroImage} alt={title} className={classes.image} />
             )}
           </figure>
 
