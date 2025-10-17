@@ -5,15 +5,30 @@ import Grid from "@mui/material/Grid";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import CircularProgress from "@mui/material/CircularProgress";
-import { useForm } from "react-hook-form";
-import contact from "util/contact";
+import { useForm, SubmitHandler } from "react-hook-form";
+import contact, { ContactData } from "util/contact";
 
-function Contact(props) {
+interface ContactProps {
+  showNameField?: boolean;
+  buttonText?: string;
+}
+
+interface FormAlert {
+  type: "success" | "error" | "warning" | "info";
+  message: string;
+}
+
+function Contact({ showNameField, buttonText }: ContactProps) {
   const [pending, setPending] = useState(false);
-  const [formAlert, setFormAlert] = useState(null);
-  const { handleSubmit, register, errors, reset } = useForm();
+  const [formAlert, setFormAlert] = useState<FormAlert | null>(null);
+  const {
+    handleSubmit,
+    register,
+    formState: { errors },
+    reset,
+  } = useForm<ContactData>();
 
-  const onSubmit = (data) => {
+  const onSubmit: SubmitHandler<ContactData> = (data) => {
     // Show pending indicator
     setPending(true);
 
@@ -51,31 +66,29 @@ function Contact(props) {
 
       <form onSubmit={handleSubmit(onSubmit)}>
         <Grid container={true} spacing={2}>
-          {props.showNameField && (
+          {showNameField && (
             <Grid item={true} xs={12} md={6}>
               <TextField
                 variant="outlined"
                 type="text"
                 label="Name"
-                name="name"
                 error={errors?.name ? true : false}
                 helperText={errors?.name && errors.name.message}
                 fullWidth={true}
-                {...register("Please enter your name", { required: true })}
+                {...register("name", { required: "Please enter your name" })}
               />
             </Grid>
           )}
 
-          <Grid item={true} xs={12} md={props.showNameField ? 6 : 12}>
+          <Grid item={true} xs={12} md={showNameField ? 6 : 12}>
             <TextField
               variant="outlined"
               type="email"
               label="Email"
-              name="email"
               error={errors?.email ? true : false}
               helperText={errors?.email && errors.email.message}
               fullWidth={true}
-              {...register("Please enter your email", { required: true })}
+              {...register("email", { required: "Please enter your email" })}
             />
           </Grid>
           <Grid item={true} xs={12}>
@@ -83,13 +96,14 @@ function Contact(props) {
               variant="outlined"
               type="text"
               label="Message"
-              name="message"
               multiline={true}
               rows={5}
               error={errors?.message ? true : false}
               helperText={errors?.message && errors.message.message}
               fullWidth={true}
-              {...register("Please enter a message", { required: true })}
+              {...register("message", {
+                required: "Please enter a message",
+              })}
             />
           </Grid>
           <Grid item={true} xs={12}>
@@ -100,7 +114,7 @@ function Contact(props) {
               type="submit"
               disabled={pending}
             >
-              {!pending && <span>{props.buttonText}</span>}
+              {!pending && <span>{buttonText}</span>}
 
               {pending && <CircularProgress size={28} />}
             </Button>
