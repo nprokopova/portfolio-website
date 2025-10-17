@@ -51,7 +51,11 @@ const useStyles = makeStyles((theme: Theme) => ({
     maxWidth: "870px",
     display: "block",
     height: "100%",
-    opacity: 0.9,
+    objectFit: "cover",
+    [theme.breakpoints.down("md")]: {
+      width: "100%",
+      margin: "0px",
+    },
   },
   title: {
     fontSize: "1.8rem",

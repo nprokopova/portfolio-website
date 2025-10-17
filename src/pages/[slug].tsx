@@ -64,6 +64,11 @@ const useStyles = makeStyles((theme: Theme) => ({
     height: "auto",
     width: "100%",
     opacity: 0.9,
+    [theme.breakpoints.down("md")]: {
+      margin: "0px",
+      height: "600px",
+      objectFit: "cover",
+    },
   },
   title: {
     fontSize: "1.8rem",
